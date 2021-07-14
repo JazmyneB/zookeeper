@@ -9,6 +9,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true}));
 //parse incoming JSON data
 app.use(express.json());
+//use the public files
+app.use(express.static('public'));
 //Requiring the data
 const { animals } = require('./data/animals');
 
@@ -133,6 +135,11 @@ app.post('/api/animals', (req, res) => {
     const animal = createNewAnimal(req.body, animals);
     
     res.json(animal);
+});
+
+//Getting Index.html
+app.get('/', (req, res) =>{
+    res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
 app.listen(PORT, () => {
