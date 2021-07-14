@@ -1,8 +1,6 @@
-
 const router = require('express').Router();
 const { filterByQuery, findById, createNewAnimal, validateAnimal } = require('../../lib/animals');
 const { animals } = require('../../data/animals');
-
 
 router.get('/animals', (req, res) => {
   let results = animals;
@@ -33,4 +31,4 @@ router.post('/animals', (req, res) => {
   }
 });
 
-module.export = router;
+module.exports = router;
